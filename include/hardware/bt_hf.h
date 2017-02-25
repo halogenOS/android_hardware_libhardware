@@ -74,20 +74,6 @@ typedef enum
     BTHF_CHLD_TYPE_ADDHELDTOCONF,            // Add all held calls to a conference
 } bthf_chld_type_t;
 
-
-/* HF Indicators HFP 1.7 */
-typedef enum
-{
-    BTHF_HF_IND_ENHANCED_DRIVER_SAFETY = 1,
-    BTHF_HF_IND_BATTERY_LEVEL_STATUS = 2,
-} bthf_hf_ind_type_t;
-
-typedef enum
-{
-    BTHF_HF_IND_DISABLED = 0,
-    BTHF_HF_IND_ENABLED,
-} bthf_hf_ind_status_t;
-
 /** Callback for connection state change.
  *  state will have one of the values from BtHfConnectionState
  */
@@ -195,8 +181,6 @@ typedef struct {
     bthf_cops_cmd_callback          cops_cmd_cb;
     bthf_clcc_cmd_callback          clcc_cmd_cb;
     bthf_unknown_at_cmd_callback    unknown_at_cmd_cb;
-    bthf_bind_cmd_callback          bind_cb;
-    bthf_biev_cmd_callback          biev_cb;
     bthf_key_pressed_cmd_callback   key_pressed_cmd_cb;
 } bthf_callbacks_t;
 
@@ -338,6 +322,10 @@ typedef struct {
     /** Response for HF Indicator change (+BIND) */
     bt_status_t (*bind_response)(bthf_hf_ind_type_t ind_id, bthf_hf_ind_status_t ind_status,
                                  bt_bdaddr_t *bd_addr);
+
+    /** Sends connectivity network type used by Voip currently to stack */
+    bt_status_t (*voip_network_type_wifi) (bthf_voip_state_t is_voip_started,
+                                           bthf_voip_call_network_type_t is_network_wifi);
 } bthf_interface_t;
 
 __END_DECLS
