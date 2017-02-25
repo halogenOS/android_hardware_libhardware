@@ -152,15 +152,6 @@ typedef void (* bthf_unknown_at_cmd_callback)(char *at_string, bt_bdaddr_t *bd_a
  */
 typedef void (* bthf_key_pressed_cmd_callback)(bt_bdaddr_t *bd_addr);
 
-/** Callback for BIND. Pass the remote HF Indicators supported.
- */
-typedef void (* bthf_bind_cmd_callback)(char *at_string, bt_bdaddr_t *bd_addr);
-
-/** Callback for BIEV. Pass the change in the Remote HF indicator values
- */
-typedef void (* bthf_biev_cmd_callback)(bthf_hf_ind_type_t ind_id, int ind_value,
-                                        bt_bdaddr_t *bd_addr);
-
 /** BT-HF callback structure. */
 typedef struct {
     /** set to sizeof(BtHfCallbacks) */
@@ -323,9 +314,6 @@ typedef struct {
     bt_status_t (*bind_response)(bthf_hf_ind_type_t ind_id, bthf_hf_ind_status_t ind_status,
                                  bt_bdaddr_t *bd_addr);
 
-    /** Sends connectivity network type used by Voip currently to stack */
-    bt_status_t (*voip_network_type_wifi) (bthf_voip_state_t is_voip_started,
-                                           bthf_voip_call_network_type_t is_network_wifi);
 } bthf_interface_t;
 
 __END_DECLS
