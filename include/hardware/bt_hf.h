@@ -310,10 +310,6 @@ typedef struct {
     bt_status_t (*voip_network_type_wifi) (bthf_voip_state_t is_voip_started,
                                            bthf_voip_call_network_type_t is_network_wifi);
 
-    /** Response for HF Indicator change (+BIND) */
-    bt_status_t (*bind_response)(bthf_hf_ind_type_t ind_id, bthf_hf_ind_status_t ind_status,
-                                 bt_bdaddr_t *bd_addr);
-
 } bthf_interface_t;
 
 __END_DECLS
