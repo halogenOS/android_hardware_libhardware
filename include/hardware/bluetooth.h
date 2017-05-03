@@ -275,7 +275,6 @@ typedef struct
    uint8_t sm_tk[16]; /* Security Manager TK Value */
    uint8_t le_sc_c[16]; /* LE Secure Connections Random Value */
    uint8_t le_sc_r[16]; /* LE Secure Connections Random Value */
-   uint8_t le_bt_dev_addr[7]; /* LE Bluetooth Device Address */
 } bt_out_of_band_data_t;
 
 
